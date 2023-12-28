@@ -1,0 +1,25 @@
+CREATE TABLE `users` (
+  `username` varchar(50) NOT NULL,
+  `password` char(68) NOT NULL,
+  `enabled` tinyint NOT NULL,
+  PRIMARY KEY (`username`)
+)
+
+CREATE TABLE `authorities` (
+  `username` varchar(50) NOT NULL,
+  `authority` varchar(50) NOT NULL,
+  UNIQUE KEY `authorities4_idx_1` (`username`,`authority`),
+  CONSTRAINT `authorities4_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+)
+
+CREATE TABLE customer (
+    id INT NOT NULL AUTO_INCREMENT,
+    email VARCHAR(255) NOT NULL,
+    pwd VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+
+INSERT INTO `customer` (`email`, `pwd`, `role`)
+ VALUES ('thanhnam@gmail.com', '123123', 'admin');
